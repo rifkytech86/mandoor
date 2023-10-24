@@ -1,0 +1,21 @@
+version: v1
+plugins:
+  - plugin: go
+    out: api/pb
+    opt: paths=source_relative
+  - plugin: go-grpc
+    out: api/pb
+    opt: paths=source_relative
+  - plugin: grpc-gateway
+    out: api/pb
+    opt:
+      - paths=source_relative
+      - allow_repeated_fields_in_body=true
+  - plugin: openapiv2
+    out: api/pb
+    opt:
+      - allow_repeated_fields_in_body=true
+  - plugin: buf.build/bufbuild/validate-go:v1.0.2
+    out: api/pb
+    opt:
+      - paths=source_relative
